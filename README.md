@@ -1,180 +1,161 @@
-# "geo(AI)Notebook" Parla con i tuoi Spatial Data. No Code. Solo un'idea semplice, frutto di 22 anni di lavoro.
+# **"geo(AI)Notebook" — Talk to Your Spatial Data. No Code. Just a Simple Idea, 22 Years in the Making.**
 
 ```context
-EN: geoNotebook: Talk to Your Spatial Data. No Code. 
+EN: geoNotebook: Talk to Your Spatial Data. No Code.
     Just A Simple Idea, 22 Years in the Making
 ===
 “geoNotebook: A Simple Idea, 22 Years in the Making”
 - "Built in 2 weeks, powered by decades of real-world GIS work."
 “geoNotebook: Talk to Your Spatial Data. No Code. Just Answers.”
-- This is bold, modern, and clearly aimed at urban planners 
-  and data leaders. It positions geoNotebook as a workflow shift — 
-  not a marginal upgrade.
+- Bold, modern, and clearly aimed at urban planners and data leaders.  
+  It positions geoNotebook as a workflow shift — not a marginal upgrade.
 ```
 
-Pioniere di un Notebook di analisi spaziale senza codice con intelligenza artificiale e database geografico PostGIS. LLM-native geo analytics notebook. Un ibrido tra BI conversazionale e geospatial analytics.
+Pioneering a **no-code spatial analysis notebook** with AI and a PostGIS geospatial database. An LLM-native geo-analytics notebook — a hybrid between conversational BI and geospatial analytics.
 
-> Nessuno script. Nessuna formula. Query riproducibili.
-> 
+> No scripts. No formulas. Reproducible queries.
+>
 > LLM-native Notebook for Spatial Intelligence. Live data. Natural language. No code.
-> 
-> Your PostGIS, finally talkative.  Query your spatial database like you think: in blocks, in questions, with maps.
+>
+> Your PostGIS, finally talkative. Query your spatial database the way you think — in blocks, in questions, with maps.
 
-Recentemente, il ho sviluppato silenziosamente una piattaforma unica nel suo genere. Si tratta di un Notebook senza codice che consente di esplorare i dati geospaziali semplicemente ponendo domande in linguaggio naturale. Pensate a questo come a un incrocio tra Word, GIS e ChatGPT, il tutto in un unico strumento **innovativo**.
+Recently, I quietly built a one-of-a-kind platform — a no-code notebook that lets you explore geospatial data simply by asking natural-language questions. Think of it as a cross between Word, GIS, and ChatGPT — all in one **innovative** tool.
 
 ![image](./screenshoots/2025-08-08%2013_02_44-Settings.png)
 
-## Cos'è (e perché è diverso)
+---
 
-Ho progettato questo prodotto intenzionalmente per **integrare funzionalità mai combinate prima**. In un unico ambiente, riunisce:
+## **What It Is (and Why It’s Different)**
 
-- **Interfaccia utente in stile notebook:** Un'interfaccia notebook interattiva per combinare mappe, grafici, tabelle e testo in blocchi di analisi coesi.
-- **Connessione PostGIS diretta:** Un collegamento in tempo reale al tuo database spaziale (PostGIS) per query di geodati di livello aziendale (senza necessità di esportazione o layer intermedi).
-- **Query basate su LLM:** Un agente di intelligenza artificiale (basato su LLM) che traduce al volo domande in italiano semplice in SQL spaziale. Tu chiedi, lui interroga PostGIS per te.
-- **Tutto su uno stack moderno:** Sviluppato come SaaS multipiattaforma (stack JavaScript), accessibile tramite web o desktop, garantisce un'esperienza fluida e reattiva per flussi di lavoro con dati pesanti.
+This product was **intentionally designed** to combine capabilities never before brought together in one place:
 
-**Perché è così importante?** Perché fino ad ora, fare analisi geospaziali di tipo business significava dover lottare con software GIS o scrivere codice. Secondo sondaggi di settore, la maggior parte dei potenziali utenti GIS evita questi strumenti a causa della complessità tecnica. Ho trovato il modo di rimuovere questa barriera. **Nessuno script, nessun gergo GIS: basta chiedere e vedere i risultati.**
+* **Notebook-style UI** — An interactive notebook interface where you combine maps, charts, tables, and text into cohesive analysis blocks.
+* **Direct PostGIS connection** — Real-time link to your spatial database for enterprise-grade geodata queries (no exports, no intermediate layers).
+* **LLM-driven queries** — An AI agent (LLM-based) instantly translates plain-language questions into spatial SQL. You ask — it queries PostGIS for you.
+* **Modern, multi-platform stack** — Built as a JavaScript-stack SaaS, accessible via web or desktop, delivering a smooth, responsive experience even with heavy datasets.
 
-## Perche' funziona (dietro le quinte)
+**Why this matters:** Until now, business-oriented geospatial analysis meant wrestling with GIS software or writing code. Industry surveys show most potential GIS users avoid these tools due to technical complexity. This removes that barrier — **no scripts, no GIS jargon — just ask and see results.**
 
-- **Schema grounding**: introspezione DB + dizionario/semantica (sinonimi, unità, SRID, categorie).
-- **SQL guardrails**: generazione vincolata (grammar), **validator** (pglast), whitelist funzioni PostGIS, timeout/limiti righe, explain cost, rollback sicuro.
-- **Trasparenza**: pulsanti **“Show SQL”**, **“Why this?”**, **“Edit & Re-run”**.
-- **Riproducibilità**: versione del prompt+SQL allegata al blocco; **snapshot** dei risultati per export.
-- **Performance**: risposte grandi → **MVT/H3** per mappe, **paginazione** per tabelle, **cache** risultati.
-- **Sicurezza**: RLS/permessi per schema e colonna; mascheramento PII.
-- **Costi/latency**: batching, caching dei piani, modelli piccoli on-prem per query-to-SQL; LLM grande solo per casi complessi.
+---
 
-### Rischi (cinici) e come li gestisci
+## **Why It Works (Under the Hood)**
 
-- **Hallucination/SQL sbagliato** → rail guard + explain + require-confirm su query pericolose.
-- **Join errate/semantica ambigua** → semantic layer con relazioni dichiarate.
-- **Query lente/costi LLM** → caching, materialized views, policy di sampling.
-- **Sfiducia del team dati** → log completo, audit, modalità **“manual override”**.
+* **Schema grounding** — DB introspection + semantic dictionary (synonyms, units, SRID, categories).
+* **SQL guardrails** — Constrained generation (grammar), **validator** (pglast), PostGIS function whitelists, row/time limits, safe rollbacks.
+* **Transparency** — Buttons for **“Show SQL”**, **“Why this?”**, **“Edit & Re-run”**.
+* **Reproducibility** — Prompt + SQL version saved with each block; **snapshots** for export.
+* **Performance** — Large responses → **MVT/H3** for maps, **pagination** for tables, **result caching**.
+* **Security** — RLS/column-level permissions; PII masking.
+* **Cost & latency control** — Batching, cached query plans, small on-prem LLM for query-to-SQL; large LLM only for complex cases.
 
-### Perché fidarsi
+---
 
-- **SQL verificato**: generazione vincolata + validazione sintattica + limiti risorse.
-- **Riproducibile**: ogni blocco salva prompt, SQL e versione dei dati.
-- **On-prem o cloud**: connettori sicuri; modelli LLM locali disponibili su richiesta.
+### **Risks (and How They’re Managed)**
 
-### Sezione FAQ
+* **Hallucination / wrong SQL** → guardrails + explain plans + require-confirm for risky queries.
+* **Wrong joins / ambiguous semantics** → semantic layer with declared relationships.
+* **Slow queries / high LLM costs** → caching, materialized views, sampling policies.
+* **Data team skepticism** → full logs, audits, **manual override** mode.
 
-- **Posso vedere la query?** Sì, “Show SQL”. Puoi modificarla e rieseguire.
-- **Rischio query sbagliate?** Usa vincoli, validatori e limiti. Hai sempre conferma prima di operazioni pesanti.
-- **Funziona senza PostGIS?** No.
-- **Dati sensibili?** Supportiamo RLS, masking e deploy on-prem.
+---
 
-## Metriche che misurano il valore (telemetria)
+### **Why You Can Trust It**
 
-- **TTFI (time to first insight)** < 60s.
-- Bassa % prompt **eseguiti al primo colpo** (senza correzione).
-- (**SQL error rate** e **timeout rate**.) Le query sono validate, sottoposte a **limiti di tempo e righe**, e rispettano i **permessi RLS** del tuo database.
-- **Costo medio per risposta** (LLM + DB): 15 euro/giorno per persona (utilizzo medio)
+* **Verified SQL** — Constrained generation + syntax validation + resource limits.
+* **Reproducible** — Every block saves prompt, SQL, and dataset version.
+* **On-prem or cloud** — Secure connectors; local LLM models available on request.
 
-## Come funziona (in azione)
+---
 
-Immagina un urbanista che esplora i dati con facilità: 
+## **Value Metrics (Telemetry)**
+
+* **TTFI (Time To First Insight)**: < 60 seconds
+* High % of prompts executed on first try (minimal corrections)
+* Low **SQL error rate** and **timeout rate** — queries validated, resource-limited, RLS-compliant
+* **Average cost per answer** (LLM + DB): \~€15/day per user (average usage)
+
+---
+
+## **How It Works (In Action)**
+
+Imagine an urban planner exploring data effortlessly:
 
 ```
-Mostrami quali zone periferiche hanno avuto una crescita demografica 
-superiore al 10% e un valore degli immobili al di sotto della media.
+Show me which suburban areas had population growth above 10% 
+and property values below the city average.
 ```
 
-In pochi secondi, l'agente di intelligenza artificiale di geoNotebook comprende la domanda, esegue le query PostGIS appropriate e **produce una mappa, un grafico e una tabella interattiva e provvede una descrizione basata sia su questi dati, sia in base al contesto precedentemente descritto** il tutto all'interno della Nota aperta, senza usare tool esterni o fare copia incolla. L'urbanista può quindi perfezionare la domanda o aggiungere contesto in un blocco di testo, senza scrivere una sola riga di codice SQL o Python. Il sistema gestisce il lavoro più pesante (join spaziali, buffer, aggregazioni, indici spaziali come H3 e heatmaps) dietro le quinte, in modo che gli utenti possano concentrarsi sulle informazioni, non sulla sintassi.
+Within seconds, the geoNotebook AI agent understands the question, runs the right PostGIS queries, and **produces an interactive map, chart, and table — plus a descriptive summary — all within the open note**, without copy-pasting or using external tools.
 
-Dietro questa semplice interfaccia, abbiamo combinato **tecnologia robusta e scelte di design**. L'interfaccia utente di geoNotebook non è solo esteticamente gradevole; è progettata per flussi di lavoro di analisi seri: pensate a documenti di ricerca riproducibili che combinano narrativa e elementi visivi. La connessione diretta al database fa sì che i dati rimangano dove si trovano (fondamentale per i team governativi e aziendali). E l'agente LLM è ottimizzato per il ragionamento spaziale, sfruttando i più recenti progressi nell'intelligenza artificiale da testo a SQL. (Infatti, ricerche recenti confermano che modelli linguistici di grandi dimensioni possono generare codice SQL geospaziale con elevata precisione, fungendo efficacemente da assistente per gli analisti GIS: esattamente ciò che vi sto descrivendo. Rif: [Is ChatGPT a Good Geospatial Data Analyst?](https://www.mdpi.com/2220-9964/13/1/26) - NSF Spatiotemporal Innovation Center,)
+The planner can refine the question or add context in a text block, never touching SQL or Python. Heavy lifting (spatial joins, buffers, aggregations, spatial indexes like H3, heatmaps) happens behind the scenes so users focus on insight, not syntax.
 
-## Impatto per gli urbanisti e l'analisi del settore pubblico
+---
 
-Questo progetto nasce da esigenze reali in ambito di **pianificazione urbana, monitoraggio ambientale e urban data science**. Urbanisti e analisti del settore pubblico dispongono spesso di vasti set di dati spaziali (zonizzazione, trasporti, censimento, sensori ambientali), ma di personale limitato per analizzarli. Questo geoNotebook no-code colma questa lacuna. Consente agli esperti di porre domande spaziali complesse e ottenere risposte immediate:
+Behind this simple interface is **deliberate technical design**:
+The UI isn’t just attractive — it’s built for serious analysis workflows, like reproducible research documents combining narrative and visuals. Direct DB connection keeps data in place (critical for government and enterprise teams). The LLM agent is optimized for spatial reasoning, leveraging the latest in text-to-SQL AI.
 
-- ****Pianificazione urbana:** Valuta le esigenze infrastrutturali o l'impatto della zonizzazione interrogando i database cittadini in linguaggio naturale. Visualizza immediatamente i risultati su una mappa per supportare le decisioni politiche.
-- **Monitoraggio ambientale:** Monitora i cambiamenti nell'uso del suolo o identifica le aree a rischio (zone alluvionali, isole di calore) ponendo domande semplici. Ottieni grafici e mappe che si aggiornano man mano che nuovi dati dei sensori vengono inviati a PostGIS.
-- **Scienza e ricerca sui dati urbani:** Analisi dei prototipi più rapide. Un ricercatore urbano può iterare sulle ipotesi senza dover scrivere codice, ad esempio correlando la qualità dell'aria con i modelli di traffico semplicemente chiedendo e lasciando che l'IA elabori i dati spaziali.
+As recent studies confirm, large language models can reliably generate geospatial SQL, acting as an assistant for GIS analysts — exactly the role geoNotebook plays.
+Reference: *[Is ChatGPT a Good Geospatial Data Analyst?](https://www.mdpi.com/2220-9964/13/1/26)* — NSF Spatiotemporal Innovation Center.
 
-Abbassando la barriera tecnica, stiamo ampliando l'accesso all'analisi geospaziale. Come ha osservato un commento del settore, la convergenza tra GIS e IA sta **aprendo la strada ad analisi e modellazione predittiva più sofisticate nella pianificazione e nella gestione ambientale**.
+---
 
-> In this pilot study, we explored the possibility of using natural language to interact with geospatial datasets with the help of LLMs. The results show that LLMs can be accurate in generating SQL code for most cases, including spatial joins, although there is still room for improvement. Even when it did not generate the correct solution, most of the answers were still on the right track. This method might not completely replace human geospatial data analysts at this point, but it could serve as an assistant or drafting partner to provide a reasonable starting point. We hope that the framework can serve as a proxy to improve the efficiency of geo-analytics and reduce barriers in geospatial analysis. ([Is ChatGPT a Good Geospatial Data Analyst?](https://www.mdpi.com/2633264))
+## **Impact for Urban Planning and Public-Sector Analysis**
 
-Sono orgoglioso di essere all'avanguardia in questa convergenza. Lo stack tecnologico e il design di interazione che ho creato sono stati scelti *molto deliberatamente* per servire questa missione: non si tratta di uno strumento di BI generico riconfezionato, ma di un ambiente appositamente progettato per la risoluzione di problemi spaziali riguardo alle tematiche trattate nei campi:  site location, grande distribuzione, analisi socio-demografiche, real estate, ambiente e risorse naturali, logistica, banche, sanita' e assicurazioni.
+This project addresses **real-world needs** in **urban planning, environmental monitoring, and urban data science**. Public-sector planners and analysts often have huge spatial datasets (zoning, transport, census, environmental sensors) but limited staff to process them. geoNotebook no-code bridges that gap.
 
-## Punti di forza
+It enables experts to ask complex spatial questions and get instant answers:
 
-- Funzionale per raccontare analisi, report veloci, supporto per la conoscenza del progetto, valutazione dati disponibili, verifica qualitativa dei dati.
-- Blocchi disponibili: mappe, grafici, tabelle, immagini, diagrammi e testuali (con corsivo, grassetto, sottilineato, elenchi puntati o numerati, ...).
-- Mappe, grafici, tabelle e diagrammi, sono generati tramite Linguaggio naturale, l'agente AI provvede ad analizzare la richiesta e restituisce l'output piu' appropriato, dando indicazioni (ad esempio la stringa SQL che ha utilizzato, per verifica ulteriore della coerenza) e con possibilita' di riformulare la domanda, in modo da ottenere risultati piu' coerenti.
-- Sia Cloud based, sia Desktop version con dati in locale.
-- Link univoco per versione non editabile, ma interattiva da consultare come un normale PDF.
-- Ogni nota effettua uno snapshot dei dati e rimangono invariati anche se i dati nel database vengono aggiornati.
+* **Urban planning** — Assess infrastructure needs or zoning impacts by querying city DBs in natural language. Instantly visualize results on a map for policy decisions.
+* **Environmental monitoring** — Track land-use changes or identify risk areas (flood zones, heat islands) with simple queries. Get charts and maps that update as new sensor data streams into PostGIS.
+* **Urban research** — Rapid prototyping of analyses. Correlate air quality with traffic patterns by simply asking and letting the AI process spatial data.
 
-In sviluppo:
+By lowering the technical barrier, we’re expanding access to geospatial analysis. Industry voices note that GIS-AI convergence is **enabling more advanced predictive modeling for planning and environmental management**.
 
-- Tag per note, pin/favorites, rename inline, tooltip chiari per i bottoni.
-- Progetti/ruoli. Note personali e Note condivise, grazie all'accesso multiutente.
-- Possibilita' "live", in cui i dati sono aggiornati direttamente dal database.
-- Generazione batch di Note basate su template definiti per elementi geografici in sequenza.
-- Commenti/track changes.
-- Log utilizzo LLM.
+---
 
-## Esempi di prompt che “vendono” il prodotto
+## **Key Strengths**
 
-- **Mappa**: “Mostra i cantieri aperti negli ultimi 30 giorni e colora per stato; filtra entro 500 m dalle scuole.”
-- **Tabella**: “Top 10 hotspot di incidenti 2024 per municipio con variazione vs 2023.”
-- **Grafico**: “Linea mensile dei nuovi permessi edilizi 2022–oggi, confronto Centro vs Periferia.”
-- **Testo**: “Riassumi in 5 punti le variazioni significative rispetto al trimestre precedente.”
+* Perfect for fast reports, project knowledge sharing, data availability checks, and qualitative data validation.
+* Block types: maps, charts, tables, images, diagrams, and text (with bold, italic, underline, lists).
+* Maps/charts/tables/diagrams are generated via natural language — the AI agent analyzes your request, returns the best output, and shows the SQL for verification, with the option to refine.
+* Cloud-based or desktop version with local data.
+* Shareable link to a non-editable but fully interactive version (like a live PDF).
+* Each note snapshots the data, so it stays unchanged even if the source DB updates.
 
-## Il mercato e le soluzioni alternative
+---
 
-Ho cercato molto prima di arrivare a questa conclusion e penso proprio di essere il primo a a proporre questa esclusiva integrazione di interfaccia utente per notebook + blocchi di mappe/grafici interattivi + PostGIS + interfaccia LLM in linguaggio naturale. È un'affermazione audace, ma ho seguito una strada tortuosa tra svariati stack, papers e slides di pitch ed eventi del settore, ma il prodotto di sua natura completamente adattabile ad ogni esigenza e pronto per essere scalato per l'uso intensivo, e' funzionante sul mio cloud.
+### **In Development**
 
-Il prodotto è attualmente in fase di sviluppo privato, non è ancora disponibile una demo pubblica o un accesso aperto, lo sto mantenendo sotto controllo mentre ricerco sample di dati "preziosi" per il continuo perfezioniamo dell'esperienza.
+* Tags, pin/favorites, inline rename, clear button tooltips
+* Projects/roles — personal notes and shared notes via multi-user access
+* “Live” mode — data updates directly from DB
+* Batch note generation from templates for sequential geographic elements
+* Comments / track changes
+* LLM usage logging
 
-Di seguito le alternative che mi permetto di dire di avere preso spunto, ma purtroppo non offrono la stessa logica e tantomeno le stesse funzionalita'.
+---
 
-### Perché non è Notion/Obsidian/ArcGIS
+## **Sample Prompts That Sell the Product**
 
-- **Vs Notion/Obsidian**: loro sono editor di documenti. Tu **esegui query reali sul DB** e mostri **mappe native**. Qui c’è calcolo, governance dati e visualizzazione geospaziale live.
+* **Map** — “Show construction sites opened in the last 30 days, colored by status; filter within 500m of schools.”
+* **Table** — “Top 10 accident hotspots 2024 by municipality with YoY change vs 2023.”
+* **Chart** — “Monthly line of new building permits from 2022 to today, comparing downtown vs suburbs.”
+* **Text** — “Summarize in 5 bullet points the major changes compared to the previous quarter.”
 
-- **Vs ArcGIS**: ArcGIS è una **suite GIS completa** (editing, geoprocessing, gestione dati). Tu sei **analisi e storytelling conversazionale** con latenza bassa e **zero scripting**. È **complementare** e cannibalizza solo i casi “dashboard leggera/report veloce”.
+---
 
-### Concorrenti mentali
+## **Market & Alternatives**
 
-| NAME                        | URL                                                                            | NO-CODE | NOTE-BLOCK | MAP     | CHART   | TABLE | DIAGRAM | ONE-PAGE | POSTGIS                      |
-| --------------------------- | ------------------------------------------------------------------------------ | ------- | ---------- | ------- | ------- | ----- | ------- | -------- | ---------------------------- |
-| ArcGIS Insights             | [https://doc.arcgis.com/en/insights/](https://doc.arcgis.com/en/insights/)     | ✅       | ✅          | ✅       | ✅       | ✅     | ✗       | ✅        | ✅                            |
-| ArcGIS StoryMaps            | [https://storymaps.arcgis.com/](https://storymaps.arcgis.com/)                 | ✅       | ✅          | ✅       | Partial | ✗     | Partial | ✅        | ✗                            |
-| Google Geospatial Reasoning | – (trusted-tester)                                                             | ✅       | ✗          | ✅       | ✅       | ✅     | ✗       | ✅        | ✗                            |
-| GeoNode / MapStore          | [https://geonode.org/](https://geonode.org/)                                   | ✅       | ✅          | ✅       | ✅       | ✅     | ✅       | ✅        | ✅                            |
-| Tableau (+GPT)              | [https://tableau.com/](https://tableau.com/)                                   | ✅       | ✗          | ✅       | ✅       | ✅     | ✗       | ✅        | ✅                            |
-| Power BI (+Copilot)         | [https://powerbi.microsoft.com/](https://powerbi.microsoft.com/)               | ✅       | ✗          | ✅       | ✅       | ✅     | ✗       | ✅        | Partial                      |
-| CARTO Workspace             | [https://carto.com/](https://carto.com/)                                       | ✅       | ✗          | ✅       | ✅       | ✅     | ✗       | ✅        | ✅                            |
-| Foursquare Studio           | [https://studio.foursquare.com/](https://studio.foursquare.com/)               | ✅       | ✗          | ✅       | ✅       | ✅     | ✗       | ✅        | ✅  |
-| Felt                        | [https://felt.com/](https://felt.com/)                                         | ✅       | ✅          | ✅       | Partial | ✅     | ✗       | ✅        | ✅                            |
-| Fused                       | [https://fused.ai/](https://fused.ai/)                                         | Partial | ✗          | ✅       | ✅       | ✅     | ✗       | ✅        | ✅                            |
-| Notion   | [https://www.notion.so/](https://www.notion.so/) | ✅       | ✅          | ✅       | ✅       | ✅       | Partial | ✅        | ✗        |
-| Obsidian | [https://obsidian.md/](https://obsidian.md/)     | Partial | ✅          | Partial | Partial | Partial | ✅       | ✅        | ✗  |
-| Google Docs (+ Charts) | [https://docs.google.com/](https://docs.google.com/)   | ✅       | ✅          | Partial | ✅       | ✅       | Partial | ✅        | ✗       |                                  
-| Jupyter               | [https://jupyter.org/](https://jupyter.org/)           | Partial | ✅          | Partial | Partial | Partial | Partial | ✅        | Partial | 
-| Observable             | [https://observablehq.com/](https://observablehq.com/) | Partial | ✅          | Partial | ✅       | ✅       | Partial | ✅        | Partial | 
-| Coda                   | [https://coda.io/](https://coda.io/)                   | ✅       | ✅          | ✅       | ✅       | ✅       | Partial | ✅        | Partial |
-| Quarto                 | [https://quarto.org/](https://quarto.org/)             | Partial | ✅          | Partial | Partial | Partial | ✅       | ✅        | Partial | +
-| Kepler.gl | [https://kepler.gl/](https://kepler.gl/) | ✅       | ✗          | ✅   | Partial | ✅     | ✗       | Partial  | ✗ |
-| Hex                         | [https://hex.tech/](https://hex.tech/)                                         | Partial | ✅          | ✅       | ✅       | ✅     | ✗       | ✅        | ✅                            |
-| GeoRetina                   | [https://georetina.ai/](https://georetina.ai/)                                 | ✅       | Partial    | ✅       | ✅       | ✅     | ✗       | ✅        | ✗                            |
-| Aino AI                     | [https://aino.world/](https://aino.world/)                                     | ✅       | ✗          | ✅       | ✅       | ✅     | ✗       | ✅        | ✅                            |
-| Alteryx                     | [https://alteryx.com/](https://alteryx.com/)                                   | ✅       | ✗          | ✅       | ✅       | ✅     | ✅       | ✅        | ✅                            |
-| Dataiku DSS                 | [https://dataiku.com/](https://dataiku.com/)                                   | ✅       | ✗          | ✅       | ✅       | ✅     | ✅       | ✅        | ✅                            |
-| LLM-Geo                     | https://github.com/gladcolor/LLM-Geo                                            | ✅       | ✅          | ✅       | ✅       | ✅     | ✗       | ✗        | Partial                      |
-| QGIS Spatial-Agent        | [https://plugins.qgis.org](https://plugins.qgis.org/plugins/SpatialAnalysisAgent-master/)                           | ✅       | ✗          | ✅       | ✅       | ✅     | ✗       | ✅        | ✅                            |
-| Maptionnaire                | [https://maptionnaire.com/](https://maptionnaire.com/)                         | ✅       | ✅          | ✅       | ✅       | ✅     | ✗       | ✅        | ✗                            |
-| Humap                       | [https://humap.me/](https://humap.me/)                                         | ✅       | ✅          | ✅       | ✗       | ✅     | ✅       | ✅        | ✗                            |
-| CartoVista                  | [https://cartovista.com/](https://cartovista.com/)                             | ✅       | ✅          | ✅       | ✅       | ✅     | ✅       | ✅        | ✗                            |
-| StoryMapJS                  | [https://storymap.knightlab.com/](https://storymap.knightlab.com/)             | ✅       | ✅          | ✅       | ✗       | ✗     | ✗       | ✅        | ✗                            |
-| Odyssey.js                  | [https://github.com/cartodb/odyssey.js](https://github.com/cartodb/odyssey.js) | Partial | Partial    | ✅       | ✗       | ✗     | ✗       | ✅        | ✗                            |
-| MapStory                    | [https://mapstory.org/](https://mapstory.org/)                                 | ✅       | ✅          | ✅       | Partial | ✅     | ✗       | ✅        | ✗                            |
-| Terrastories                | [https://terrastories.app/](https://terrastories.app/)                         | ✅       | ✅          | ✅       | Partial | ✅     | ✗       | ✅        | ✗                            |
-| Mode                        | [https://mode.com/](https://mode.com/)                                         | Partial | ✅          | Partial | ✅       | ✅     | ✗       | ✅        | ✅                            |
-| Monarcha                    | [https://monarcha.ai/](https://monarcha.ai/)                                   | ✅       | ✗          | ✅       | ✅       | ✅     | ✗       | ✅        | ✗                            |
-| Julius AI                   | [https://julius.ai/](https://julius.ai/)                                       | ✅       | ✅          | ✗       | ✅       | ✅     | ✗       | ✅        | ✅                            |
-| ChatGeoPT                   | [GitHub demo](https://github.com/earth-genome/ChatGeoPT)                       | ✅       | ✗          | ✗       | ✗       | ✅     | ✗       | ✗        | ✗                            |
+After thorough research, I believe I’m the first to propose this **exclusive** integration of notebook UI + interactive map/chart blocks + PostGIS + natural-language LLM interface.
+
+It’s bold, but I’ve followed a winding path through multiple stacks, papers, and industry pitches — and this is fully adaptable, ready for high-intensity use, and already running in my cloud environment.
+
+Currently in **private development** — no public demo or open access yet. I’m refining it while sourcing valuable sample datasets to further improve the experience.
+
+---
+
+### **Why It’s Not Notion / Obsidian / ArcGIS**
+
+* **Vs Notion / Obsidian** — They are document editors. Here, you **run real DB queries** and display **native maps**. This is live geospatial calculation, data governance, and visualization — not static notes.
+* **Vs ArcGIS** — ArcGIS is a **full GIS suite** (editing, geoprocessing, data management). This is **conversational analysis & storytelling** with low latency and **zero scripting** — complementary, only replacing “light dashboard / quick report” use cases.
+
